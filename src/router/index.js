@@ -7,7 +7,7 @@ const routes = [
     path: '/',
     component: Home,
     name: 'home',
-    meta: { title: 'Ласкаво просимо!' },
+    meta: { title: 'MaxCar - AI Помощник по подбору автомобилей' },
   },
 ]
 
