@@ -1,7 +1,11 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import chatService from '@/services/chatService'
-import { MESSAGE_ROLES } from '@/constants'
+
+const MESSAGE_ROLES = {
+  USER: 'user',
+  ASSISTANT: 'assistant',
+}
 
 /**
  * Chat Store

@@ -69,7 +69,11 @@
 <script setup>
 import { ref, nextTick, watch } from 'vue'
 import { useChatStore } from '@/stores/chatStore'
-import { CHAT_CONFIG } from '@/constants'
+
+const CHAT_CONFIG = {
+  maxMessageLength: 500,
+  placeholder: 'Напишите ваш вопрос про автомобили...',
+}
 
 const chatStore = useChatStore()
 const userInput = ref('')
