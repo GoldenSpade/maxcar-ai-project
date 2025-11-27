@@ -2,6 +2,7 @@ import express from 'express'
 import cors from 'cors'
 import dotenv from 'dotenv'
 import chatRoutes from './routes/chatRoutes.js'
+import settingsRoutes from './routes/settingsRoutes.js'
 
 dotenv.config()
 
@@ -12,7 +13,8 @@ app.use(cors())
 app.use(express.json())
 
 // Подключение роутов
-app.use('/api', chatRoutes)
+app.use('/api/chat', chatRoutes)
+app.use('/api/settings', settingsRoutes)
 
 // Health check endpoint
 app.get('/health', (_req, res) => {

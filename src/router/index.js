@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
 import Home from '@/pages/Home.vue'
+import Admin from '@/pages/Admin.vue'
 
 const routes = [
   {
@@ -8,6 +9,12 @@ const routes = [
     component: Home,
     name: 'home',
     meta: { title: 'MaxCar - AI Помощник по подбору автомобилей' },
+  },
+  {
+    path: '/admin',
+    component: Admin,
+    name: 'admin',
+    meta: { title: 'Админ-панель - MaxCar' },
   },
 ]
 

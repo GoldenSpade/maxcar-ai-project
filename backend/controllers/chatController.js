@@ -1,4 +1,5 @@
 import OpenAI from 'openai'
+import { loadSettings } from './settingsController.js'
 
 /**
  * Chat Controller
@@ -33,24 +34,22 @@ export const sendMessage = async (req, res) => {
       })
     }
 
+    // Загружаем настройки из файла
+    const settings = await loadSettings()
+
     // Добавляем системный промпт в начало
     const systemPrompt = {
       role: 'system',
-      content: `Ты - эксперт-консультант по подбору автомобилей.
-Твоя задача - помогать новичкам, которые не разбираются в автомобилях.
-Отвечай просто, понятно и дружелюбно.
-Задавай уточняющие вопросы о бюджете, целях использования, предпочтениях.
-Объясняй технические термины простым языком.
-Отвечай на русском или украинском языке, в зависимости от языка вопроса.`,
+      content: settings.systemPrompt,
     }
 
     const openai = getOpenAI()
 
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini',
+      model: settings.model,
       messages: [systemPrompt, ...messages],
-      temperature: 0.7,
-      max_tokens: 1000,
+      temperature: settings.temperature,
+      max_tokens: settings.maxTokens,
     })
 
     const assistantMessage = completion.choices[0].message
